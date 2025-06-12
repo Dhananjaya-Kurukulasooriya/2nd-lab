@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/df2327f8-e15e-4420-b126-4753f0450876/resourceGroups/appsvc_linux_eastus/providers/Microsoft.Web/sites/flaskgreetings",
+    "appService.deploySubpath": "."
+}
