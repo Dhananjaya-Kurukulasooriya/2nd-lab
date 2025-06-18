@@ -78,7 +78,7 @@ Create  **BLOB-SAS-TOKEN** , **BLOB-SAS-URL** and **GREETING-MESSAGE** Secret in
 
 10.  Search for `key vault` in Azure Portal and select the `key vault name`.  
     
-    ![10](./assets/snapshot.png)
+     ![10](./assets/snapshot.png)
 
 
 11. In the left-hand navigation  `overview` blade , under the "Objects" section, click `Secrets.`
