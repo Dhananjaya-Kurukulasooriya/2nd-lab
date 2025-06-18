@@ -85,24 +85,22 @@ Generate Shared Access Signature (SAS) Token for the Blob:
 13. Provide the following details to generate the SAS token and Click `Generate SAS token and URL`.
     
    * **Permissions**= Select only the **Read** permission . This restrictive permission set is crucial for adherence to the principle of least privilege.
-
    * **Start and expiry date/time** define a practical expiration period (e.g., 24 hours from the current timestamp) suitable for the duration of the laboratory exercise.
-
    * For **Allowed IP addresses** this field may be left unpopulated or configured for enhanced security by specifying permissible IP ranges; however, this is not strictly required for the present laboratory scenario.
-
    * For **Allowed protocols**, select `HTTPS only`.
 
      ![13](./assets/snapshot11.png)
+
    Here we generate a *Shared Access Signature* to securely access and Read the image for a pre-define time period.
 
 14. Crucially, copy only the **Blob SAS token** string and **Blob SAS URL** . This specific token will be securely stored within Azure Key Vault. It is imperative to avoid copying the "Blob SAS URL" or the "Blob URL."
 
     ![14](./assets/snapshot12.png)
 
-    >   The values we need should be formatted like below:<p>
+    The values we need should be formatted like below:<p>
     **BLOB-SAS-URL**= ``` https://<storage-account-name>.blob.core.windows.net/<container-name>/<image-name>```</p>
     **BLOB-SAS-TOKEN** = sp=r&st=2025-06-14T20:57:30Z&se=2025-06-15T04:57:30Z&spr=https&sv=2024-11-04&sr=b&sig=###########################################
-
+   
 ---
    
 
@@ -121,7 +119,6 @@ Create  **BLOB-SAS-TOKEN** and **BLOB-SAS-URL** Secret in Key Vault:
 
     ![4.3](./assets/snapshot2.png)
    * For **Upload options**, select **Manual**.
-
    * For **Name**, input **BLOB-SAS-TOKEN**.
    * For **Value**, paste the previously copied *Blob SAS token* string from Blob Storage.
    * All other configuration settings should retain their default values.
@@ -133,11 +130,8 @@ Create  **BLOB-SAS-TOKEN** and **BLOB-SAS-URL** Secret in Key Vault:
 18. Same way lets create another secret for *SAS-BLOB_URL*, Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, yhen Click `Create`.
 
    * For **Upload options**, select **Manual**.
-
    * For **Name**, input **BLOB-SAS-URL**.
-
    * For **Value**, paste the previously copied *Blob SAS URL* string from Blob Storage.
-
    * All other configuration settings should retain their default values.
    ![4.15](./assets/snapshot14.png)
 
