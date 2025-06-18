@@ -12,7 +12,7 @@ This guide delineates the comprehensive process for deploying a Flask web applic
 
 Create Blob Container and Upload Image to Storage Account:
 
-1. Search for Storage Accounts in Azure portal and select Storage Accounts resource.
+1. Search for `Storage Accounts` in Azure portal and select Storage Accounts resource.
     
    ![1](./assets/image1.png)
 
