@@ -122,7 +122,7 @@ def home():
     image_url = None
     if blob_storage_url and blob_sas_token:
         # Construct the full image URL by appending the SAS token.
-        # The SAS token typically starts with '?' already, so we just concatenate.
+        
         image_url = f"{blob_storage_url}?{blob_sas_token}"
     
     # Render the HTML template, passing the greeting message and the constructed image URL.

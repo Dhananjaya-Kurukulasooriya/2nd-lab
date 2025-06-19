@@ -16,11 +16,11 @@ Create Blob Container and Upload Image to Storage Account:
     
    ![1](./assets/image1.png)
 
-2. In the left-hand **navigation pane**( `Overview` blade), under `Data storage` click `Containers`.
+2. In the left-hand **navigation pane**( `Overview` blade), under `Data storage` click `Containers`:
 
    ![2](./assets/snapshot5.png)
 
-3. Click the `Add Container` button. and provide the required information as follow,
+3. Click the `Add Container` button. and provide the required information as follow:
 
      ![3.a](./assets/snapshot6.png)
 
@@ -30,16 +30,16 @@ Create Blob Container and Upload Image to Storage Account:
 
      ![3.b](./assets/snapshot7.png)
 
-4.  Click `Create`.
+4.  Click `Create`:
    
     ![4](./assets/image2.png)
    
 
-5. Let's upload an image into the newly created **images** container. Go to the `images` container and Click the `Upload` button.
+5. Let's upload an image into the newly created **images** container. Go to the `images` container and Click the `Upload` button:
 
     ![5](./assets/snapshot8.png)
 
-6. Click `Browse for files` and select a small image file (e.g., a .png or .jpg format) from your local machine. It is advisable to rename the file to a concise identifier such as *secretimage.png* if not already appropriately named and Click `Upload`.
+6. Click `Browse for files` and select a small image file (e.g., a .png or .jpg format) from your local machine. It is advisable to rename the file to a concise identifier such as *secretimage.png* if not already appropriately named and Click `Upload`:
    ![6](./assets/snapshot9.png)
 
 
@@ -48,11 +48,11 @@ Create Blob Container and Upload Image to Storage Account:
 ---
 Generate Shared Access Signature (SAS) Token for the Blob:
 
-7. Within the images container in your Storage Account, locate and select the *secretimage.png* blob that was recently uploaded.From the blob's overview interface, click `Generate SAS` in the left-hand menu.
+7. Within the images container in your Storage Account, locate and select the *secretimage.png* blob that was recently uploaded.From the blob's overview interface, click `Generate SAS` in the left-hand menu:
 
     ![7](./assets/snapshot10.png)
 
-8. Provide the following details to generate the SAS token and Click `Generate SAS token and URL`.
+8. Provide the following details to generate the SAS token and Click `Generate SAS token and URL`:
     
    * **Permissions**= Select only the **Read** permission . This restrictive permission set is crucial for adherence to the principle of least privilege.
    * **Start and expiry date/time** define a practical expiration period (e.g., 24 hours from the current timestamp) suitable for the duration of the laboratory exercise.
@@ -61,7 +61,7 @@ Generate Shared Access Signature (SAS) Token for the Blob:
 
      ![8](./assets/snapshot11.png)
 
-   Here we generate a *Shared Access Signature* to securely access and Read the image for a pre-define time period.
+   Here we generate a *Shared Access Signature* to securely access and Read the image for a pre-define time period:
 
 9. Crucially, copy only the **Blob SAS token** string and **Blob SAS URL** . This specific token will be securely stored within Azure Key Vault. It is imperative to avoid copying the "Blob SAS URL" or the "Blob URL."
 
@@ -81,11 +81,11 @@ Create  **BLOB-SAS-TOKEN** , **BLOB-SAS-URL** and **GREETING-MESSAGE** Secret in
      ![10](./assets/snapshot.png)
 
 
-11. In the left-hand navigation  `overview` blade , under the "Objects" section, click `Secrets.`
+11. In the left-hand navigation  `overview` blade , under the "Objects" section, click `Secrets.`:
    
     ![11](./assets/snapshot1.png)
 
-12. Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then click `Create`.
+12. Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then click `Create`:
 
     ![12.a](./assets/snapshot2.png)
    * For **Upload options**, select **Manual**.
@@ -97,7 +97,7 @@ Create  **BLOB-SAS-TOKEN** , **BLOB-SAS-URL** and **GREETING-MESSAGE** Secret in
 
     
 
-13. Same way lets create another secret for *SAS-BLOB_URL*, Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then Click `Create`.
+13. Same way lets create another secret for *SAS-BLOB_URL*, Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then Click `Create`:
 
    * For **Upload options**, select **Manual**.
    * For **Name**, input **BLOB-SAS-URL**.
@@ -105,7 +105,7 @@ Create  **BLOB-SAS-TOKEN** , **BLOB-SAS-URL** and **GREETING-MESSAGE** Secret in
    * All other configuration settings should retain their default values.
    ![13](./assets/snapshot14.png)
 
-14. Same way lets create another secret for **GREETING-MESSAGE**, Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then Click `Create`.
+14. Same way lets create another secret for **GREETING-MESSAGE**, Click the `+ Generate/Import` button at the top of the interface and fill the required fields with following details, then Click `Create`:
    * `Upload options` = `Manual`.
    * `Name`  = `GREETING-MESSAGE`. 
    * `Value` = *Hello from Azure Key Vault! This message is super secret..*
@@ -117,7 +117,7 @@ Create  **BLOB-SAS-TOKEN** , **BLOB-SAS-URL** and **GREETING-MESSAGE** Secret in
 
  
 
-15. Once you complete up to this level, youre key vault should look like this.
+15. Once you complete up to this level, youre key vault should look like this:
 
     ![15](./assets/snapshot15.png)
 
