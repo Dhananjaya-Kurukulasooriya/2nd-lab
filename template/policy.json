@@ -1,0 +1,175 @@
+{
+  "properties": {
+    "displayName": "Web App Infrastructure Compliance Policy",
+    "description": "Comprehensive policy that enforces compliance and security for Python web application infrastructure including Azure Web App, Key Vault, and Storage Account with resource type restrictions",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Web/sites"
+              },
+              {
+                "field": "kind",
+                "contains": "app"
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "Microsoft.Web/sites/httpsOnly",
+                    "notEquals": true
+                  },
+                  {
+                    "not": {
+                      "field": "Microsoft.Web/sites/config/linuxFxVersion",
+                      "equals": "PYTHON|3.9"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Web/serverfarms"
+              },
+              {
+                "not": {
+                  "allOf": [
+                    {
+                      "field": "Microsoft.Web/serverfarms/sku.name",
+                      "equals": "F1"
+                    },
+                    {
+                      "field": "Microsoft.Web/serverfarms/sku.tier",
+                      "equals": "Free"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                "anyOf": [
+                  {
+                    "not": {
+                      "allOf": [
+                        {
+                          "field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+                          "equals": true
+                        },
+                        {
+                          "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+                          "equals": "TLS1_2"
+                        },
+                        {
+                          "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                          "equals": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "field": "Microsoft.Storage/storageAccounts/sku.name",
+                    "notEquals": "Standard_LRS"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.KeyVault/vaults"
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "Microsoft.KeyVault/vaults/sku.name",
+                    "notEquals": "standard"
+                  },
+                  {
+                    "not": {
+                      "allOf": [
+                        {
+                          "field": "Microsoft.KeyVault/vaults/enabledForDeployment",
+                          "equals": false
+                        },
+                        {
+                          "field": "Microsoft.KeyVault/vaults/enabledForDiskEncryption",
+                          "equals": false
+                        },
+                        {
+                          "field": "Microsoft.KeyVault/vaults/enabledForTemplateDeployment",
+                          "equals": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "not": {
+              "field": "type",
+              "in": [
+                "Microsoft.Web/sites",
+                "Microsoft.Web/serverfarms",
+                "Microsoft.Storage/storageAccounts",
+                "Microsoft.Storage/storageAccounts/blobServices",
+                "Microsoft.Storage/storageAccounts/blobServices/containers",
+                "Microsoft.Storage/storageAccounts/fileServices",
+                "Microsoft.Storage/storageAccounts/queueServices",
+                "Microsoft.Storage/storageAccounts/tableServices",
+                "Microsoft.KeyVault/vaults",
+                "Microsoft.Web/sites/config",
+                "Microsoft.Web/sites/extensions",
+                "Microsoft.Web/sites/hostNameBindings",
+                "Microsoft.Web/sites/sourcecontrols"
+              ]
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+        "type": "Microsoft.Web/sites/config",
+        "name": "web",
+        "existenceCondition": {
+          "field": "Microsoft.Web/sites/config/linuxFxVersion",
+          "equals": "PYTHON|3.9"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "The effect determines what happens when the policy rule is evaluated to match"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  }
+}
+}

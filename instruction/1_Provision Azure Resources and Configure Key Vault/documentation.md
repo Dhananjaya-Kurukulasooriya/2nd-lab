@@ -2,9 +2,6 @@ In modern cloud application development, securely handling sensitive configurati
 
 This guide delineates the comprehensive process for deploying a Flask web application to Azure App Service. The methodology emphasizes the ` secure retrieval` of two distinct secrets—specifically, a textual *greeting message* and an *Azure Blob Storage Shared Access Signature (SAS) token*—from Azure Key Vault, facilitated by Azure Managed Identity. Subsequently, the application will demonstrate the display of an image directly sourced from Azure Blob Storage, utilizing the aforementioned SAS token. 
 
-- [ ] Need to mention how we going to deploy the code.
-- [ ] Need to define login steps.
-- [ ] add the final keyvault ss
   
 ## Instructions
  
